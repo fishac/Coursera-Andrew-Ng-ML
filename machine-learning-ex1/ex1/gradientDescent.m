@@ -21,8 +21,8 @@ for iter = 1:num_iters
     temp = zeros(size(theta), 1);
 
     temp = temp + theta;
-    predictions = theta' * X;
-    temp = temp - alpha * (1 / m) * sum((predictions' - y) .* ) 
+    predictions = X * theta;
+    temp = temp - alpha * (1 / m) * (X' * (predictions' - y)) 
 
 
 
@@ -32,6 +32,7 @@ for iter = 1:num_iters
 
     % Save the cost J in every iteration    
     J_history(iter) = computeCost(X, y, theta);
+    theta = temp
 
 end
 
